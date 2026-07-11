@@ -2,7 +2,8 @@
   "meta": {
     "schema_version": "0.1.0",
     "meetings": [
-      "2026-06-01-meeting1"
+      "2026-06-01-meeting1",
+      "2026-06-08-meeting2"
     ],
     "meetily_ingested": []
   },
@@ -24,7 +25,7 @@
       "type": "Requirement",
       "title": "User-Friendly Design",
       "content": "The remote control should be user-friendly",
-      "status": "active",
+      "status": "superseded",
       "source_meeting": "2026-06-01-meeting1",
       "created_at": "2026-07-11T19:42:38+00:00",
       "supersedes": [],
@@ -93,6 +94,80 @@
         "proj-stage-2"
       ],
       "confidence": 1.0,
+      "owner": null
+    },
+    {
+      "id": "req-international-compatibility",
+      "type": "Requirement",
+      "title": "International Compatibility",
+      "content": "The remote control should be compatible with different regions and countries, considering factors such as DVD player zones, frequencies, and character sets.",
+      "status": "active",
+      "source_meeting": "2026-06-08-meeting2",
+      "created_at": "2026-07-11T19:45:35+00:00",
+      "supersedes": [],
+      "confidence": 0.8,
+      "owner": null
+    },
+    {
+      "id": "req-cost-effectiveness",
+      "type": "Requirement",
+      "title": "Cost Effectiveness",
+      "content": "The production cost of the remote control should not exceed 50% of the selling price, which is 25 euros.",
+      "status": "active",
+      "source_meeting": "2026-06-08-meeting2",
+      "created_at": "2026-07-11T19:45:35+00:00",
+      "supersedes": [],
+      "confidence": 0.9,
+      "owner": null
+    },
+    {
+      "id": "req-user-friendly-design-v2",
+      "type": "Requirement",
+      "title": "User-Friendly Design",
+      "content": "The remote control should have a user-friendly design, potentially combining multiple uses into one device.",
+      "status": "active",
+      "source_meeting": "2026-06-08-meeting2",
+      "created_at": "2026-07-11T19:45:35+00:00",
+      "supersedes": [
+        "req-user-friendly-design"
+      ],
+      "confidence": 0.7,
+      "owner": null
+    },
+    {
+      "id": "decision-target-market",
+      "type": "Decision",
+      "title": "Target Market",
+      "content": "The remote control will be sold internationally, and its price may appeal to different markets in various regions.",
+      "status": "active",
+      "source_meeting": "2026-06-08-meeting2",
+      "created_at": "2026-07-11T19:45:35+00:00",
+      "supersedes": [],
+      "confidence": 0.8,
+      "owner": null
+    },
+    {
+      "id": "open-question-competitive-pricing",
+      "type": "OpenQuestion",
+      "title": "Competitive Pricing",
+      "content": "How does the price of the remote control compare to other similar products on the market?",
+      "status": "active",
+      "source_meeting": "2026-06-08-meeting2",
+      "created_at": "2026-07-11T19:45:35+00:00",
+      "supersedes": [],
+      "confidence": 0.5,
+      "owner": null
+    },
+    {
+      "id": "component-remote-control-design",
+      "type": "Component",
+      "title": "Remote Control Design",
+      "content": "The design of the remote control, including its features and functionality.",
+      "status": "active",
+      "source_meeting": "2026-06-08-meeting2",
+      "created_at": "2026-07-11T19:45:35+00:00",
+      "supersedes": [],
+      "confidence": 0.8,
       "owner": null
     }
   ],
@@ -166,6 +241,66 @@
       "from": "proj-stage-2",
       "to": "proj-stage-3",
       "type": "DEPENDS_ON"
+    },
+    {
+      "from": "req-international-compatibility",
+      "to": "2026-06-08-meeting2",
+      "type": "DECIDED_IN"
+    },
+    {
+      "from": "req-cost-effectiveness",
+      "to": "2026-06-08-meeting2",
+      "type": "DECIDED_IN"
+    },
+    {
+      "from": "req-user-friendly-design-v2",
+      "to": "req-user-friendly-design",
+      "type": "SUPERSEDES"
+    },
+    {
+      "from": "req-user-friendly-design-v2",
+      "to": "2026-06-08-meeting2",
+      "type": "DECIDED_IN"
+    },
+    {
+      "from": "decision-target-market",
+      "to": "2026-06-08-meeting2",
+      "type": "DECIDED_IN"
+    },
+    {
+      "from": "open-question-competitive-pricing",
+      "to": "2026-06-08-meeting2",
+      "type": "DECIDED_IN"
+    },
+    {
+      "from": "component-remote-control-design",
+      "to": "2026-06-08-meeting2",
+      "type": "DECIDED_IN"
+    },
+    {
+      "from": "req-international-compatibility",
+      "to": "component-remote-control-design",
+      "type": "RELATES_TO"
+    },
+    {
+      "from": "req-cost-effectiveness",
+      "to": "component-remote-control-design",
+      "type": "RELATES_TO"
+    },
+    {
+      "from": "req-user-friendly-design-v2",
+      "to": "component-remote-control-design",
+      "type": "RELATES_TO"
+    },
+    {
+      "from": "decision-target-market",
+      "to": "req-international-compatibility",
+      "type": "DECIDED_IN"
+    },
+    {
+      "from": "open-question-competitive-pricing",
+      "to": "decision-target-market",
+      "type": "RELATES_TO"
     }
   ]
 }
