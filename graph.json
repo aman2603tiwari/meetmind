@@ -2,7 +2,8 @@
   "meta": {
     "schema_version": "0.1.0",
     "meetings": [
-      "m1"
+      "m1",
+      "m2"
     ]
   },
   "nodes": [
@@ -11,7 +12,7 @@
       "type": "Decision",
       "title": "API Type",
       "content": "Use REST for the public API",
-      "status": "active",
+      "status": "superseded",
       "source_meeting": "m1",
       "created_at": "2026-07-11T18:54:01+00:00",
       "supersedes": [],
@@ -35,7 +36,7 @@
       "type": "Requirement",
       "title": "Idempotent Payments",
       "content": "Every payment must be idempotent",
-      "status": "active",
+      "status": "superseded",
       "source_meeting": "m1",
       "created_at": "2026-07-11T18:54:01+00:00",
       "supersedes": [],
@@ -65,6 +66,70 @@
       "supersedes": [],
       "confidence": 1.0,
       "owner": "Bob"
+    },
+    {
+      "id": "decision-api-graphql",
+      "type": "Decision",
+      "title": "Public API is GraphQL",
+      "content": "The public API will now use GraphQL instead of REST",
+      "status": "active",
+      "source_meeting": "m2",
+      "created_at": "2026-07-11T18:54:54+00:00",
+      "supersedes": [
+        "decision-api-rest"
+      ],
+      "confidence": 1.0,
+      "owner": "Bob"
+    },
+    {
+      "id": "req-flexible-queries",
+      "type": "Requirement",
+      "title": "Flexible Queries",
+      "content": "The mobile team needs flexible queries",
+      "status": "active",
+      "source_meeting": "m2",
+      "created_at": "2026-07-11T18:54:54+00:00",
+      "supersedes": [],
+      "confidence": 1.0,
+      "owner": null
+    },
+    {
+      "id": "req-refund-support",
+      "type": "Requirement",
+      "title": "Refund Support",
+      "content": "The system must support refunds in v1",
+      "status": "active",
+      "source_meeting": "m2",
+      "created_at": "2026-07-11T18:54:54+00:00",
+      "supersedes": [],
+      "confidence": 1.0,
+      "owner": null
+    },
+    {
+      "id": "req-idempotent-payments-v2",
+      "type": "Requirement",
+      "title": "Idempotent Payments",
+      "content": "The system must have idempotent payments",
+      "status": "active",
+      "source_meeting": "m2",
+      "created_at": "2026-07-11T18:54:54+00:00",
+      "supersedes": [
+        "req-idempotent-payments"
+      ],
+      "confidence": 1.0,
+      "owner": null
+    },
+    {
+      "id": "component-postgres",
+      "type": "Component",
+      "title": "Postgres Database",
+      "content": "Postgres is used as the database",
+      "status": "active",
+      "source_meeting": "m2",
+      "created_at": "2026-07-11T18:54:54+00:00",
+      "supersedes": [],
+      "confidence": 1.0,
+      "owner": null
     }
   ],
   "edges": [
@@ -111,6 +176,61 @@
     {
       "from": "open-question-refunds",
       "to": "component-api-design",
+      "type": "RELATES_TO"
+    },
+    {
+      "from": "decision-api-graphql",
+      "to": "decision-api-rest",
+      "type": "SUPERSEDES"
+    },
+    {
+      "from": "decision-api-graphql",
+      "to": "m2",
+      "type": "DECIDED_IN"
+    },
+    {
+      "from": "req-flexible-queries",
+      "to": "m2",
+      "type": "DECIDED_IN"
+    },
+    {
+      "from": "req-refund-support",
+      "to": "m2",
+      "type": "DECIDED_IN"
+    },
+    {
+      "from": "req-idempotent-payments-v2",
+      "to": "req-idempotent-payments",
+      "type": "SUPERSEDES"
+    },
+    {
+      "from": "req-idempotent-payments-v2",
+      "to": "m2",
+      "type": "DECIDED_IN"
+    },
+    {
+      "from": "component-postgres",
+      "to": "m2",
+      "type": "DECIDED_IN"
+    },
+    {
+      "from": "decision-api-graphql",
+      "to": "req-flexible-queries",
+      "type": "IMPLEMENTS"
+    },
+    {
+      "from": "req-refund-support",
+      "to": "decision-api-graphql",
+      "type": "RELATES_TO"
+    },
+    {
+      "from": "req-idempotent-payments-v2",
+      "to": "decision-api-graphql",
+      "type": "RELATES_TO"
+    },
+    {
+      "from": "component-postgres",
+      "to": "decision-api-graphql",
       "type": "RELATES_TO"
     }
   ]

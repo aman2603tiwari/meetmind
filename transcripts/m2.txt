@@ -1,0 +1,7 @@
+Alice: Review meeting. One big change: the mobile team needs flexible queries.
+Bob: Right, REST is getting painful. I propose we switch the public API to GraphQL.
+Alice: Agreed — the public API is now GraphQL, not REST. Bob still owns it.
+Carol: Postgres is still fine, no change there.
+Alice: And refunds — we decided we DO support refunds in v1 now.
+Bob: Okay, refund support is a v1 requirement then.
+Carol: Idempotent payments still stands, unchanged.
