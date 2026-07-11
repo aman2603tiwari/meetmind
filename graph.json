@@ -2,7 +2,8 @@
   "meta": {
     "schema_version": "0.1.0",
     "meetings": [
-      "1st"
+      "1st",
+      "2nd"
     ],
     "meetily_ingested": []
   },
@@ -24,7 +25,7 @@
       "type": "Requirement",
       "title": "User-Friendly Design",
       "content": "The remote control should be user-friendly",
-      "status": "active",
+      "status": "superseded",
       "source_meeting": "1st",
       "created_at": "2026-07-11T20:34:42+00:00",
       "supersedes": [],
@@ -66,6 +67,92 @@
       "supersedes": [],
       "confidence": 1.0,
       "owner": "Laura"
+    },
+    {
+      "id": "req-international-compatibility",
+      "type": "Requirement",
+      "title": "International Compatibility",
+      "content": "The remote control should be compatible with different regions and countries, considering factors such as DVD player zones, frequencies, and character sets.",
+      "status": "active",
+      "source_meeting": "2nd",
+      "created_at": "2026-07-11T20:38:59+00:00",
+      "supersedes": [],
+      "confidence": 0.8,
+      "owner": null
+    },
+    {
+      "id": "req-cost-effective",
+      "type": "Requirement",
+      "title": "Cost-Effective",
+      "content": "The production cost of the remote control should not exceed 50% of the selling price, which is 1250 euro.",
+      "status": "active",
+      "source_meeting": "2nd",
+      "created_at": "2026-07-11T20:38:59+00:00",
+      "supersedes": [],
+      "confidence": 0.9,
+      "owner": null
+    },
+    {
+      "id": "req-user-friendly",
+      "type": "Requirement",
+      "title": "User-Friendly",
+      "content": "The remote control should be designed to combine multiple uses, such as controlling satellite, regular TV, VCR, and other devices.",
+      "status": "active",
+      "source_meeting": "2nd",
+      "created_at": "2026-07-11T20:38:59+00:00",
+      "supersedes": [
+        "req-user-friendly-design"
+      ],
+      "confidence": 0.7,
+      "owner": null
+    },
+    {
+      "id": "decision-selling-price",
+      "type": "Decision",
+      "title": "Selling Price",
+      "content": "The remote control will be sold for 25 euro.",
+      "status": "active",
+      "source_meeting": "2nd",
+      "created_at": "2026-07-11T20:38:59+00:00",
+      "supersedes": [],
+      "confidence": 0.9,
+      "owner": null
+    },
+    {
+      "id": "decision-production-cost",
+      "type": "Decision",
+      "title": "Production Cost",
+      "content": "The production cost of the remote control should not exceed 1250 euro.",
+      "status": "active",
+      "source_meeting": "2nd",
+      "created_at": "2026-07-11T20:38:59+00:00",
+      "supersedes": [],
+      "confidence": 0.9,
+      "owner": null
+    },
+    {
+      "id": "open-question-market-appeal",
+      "type": "OpenQuestion",
+      "title": "Market Appeal",
+      "content": "Will the 25 euro remote control appeal to different markets in various regions?",
+      "status": "active",
+      "source_meeting": "2nd",
+      "created_at": "2026-07-11T20:38:59+00:00",
+      "supersedes": [],
+      "confidence": 0.5,
+      "owner": null
+    },
+    {
+      "id": "component-remote-control",
+      "type": "Component",
+      "title": "Remote Control",
+      "content": "The remote control is the main product being designed and developed.",
+      "status": "active",
+      "source_meeting": "2nd",
+      "created_at": "2026-07-11T20:38:59+00:00",
+      "supersedes": [],
+      "confidence": 0.9,
+      "owner": null
     }
   ],
   "edges": [
@@ -112,6 +199,71 @@
     {
       "from": "proj-design-stages",
       "to": "proj-remote-control-design",
+      "type": "RELATES_TO"
+    },
+    {
+      "from": "req-international-compatibility",
+      "to": "2nd",
+      "type": "DECIDED_IN"
+    },
+    {
+      "from": "req-cost-effective",
+      "to": "2nd",
+      "type": "DECIDED_IN"
+    },
+    {
+      "from": "req-user-friendly",
+      "to": "req-user-friendly-design",
+      "type": "SUPERSEDES"
+    },
+    {
+      "from": "req-user-friendly",
+      "to": "2nd",
+      "type": "DECIDED_IN"
+    },
+    {
+      "from": "decision-selling-price",
+      "to": "2nd",
+      "type": "DECIDED_IN"
+    },
+    {
+      "from": "decision-production-cost",
+      "to": "2nd",
+      "type": "DECIDED_IN"
+    },
+    {
+      "from": "open-question-market-appeal",
+      "to": "2nd",
+      "type": "DECIDED_IN"
+    },
+    {
+      "from": "component-remote-control",
+      "to": "2nd",
+      "type": "DECIDED_IN"
+    },
+    {
+      "from": "req-international-compatibility",
+      "to": "component-remote-control",
+      "type": "RELATES_TO"
+    },
+    {
+      "from": "req-cost-effective",
+      "to": "decision-production-cost",
+      "type": "IMPLEMENTS"
+    },
+    {
+      "from": "req-user-friendly",
+      "to": "component-remote-control",
+      "type": "RELATES_TO"
+    },
+    {
+      "from": "decision-selling-price",
+      "to": "component-remote-control",
+      "type": "RELATES_TO"
+    },
+    {
+      "from": "open-question-market-appeal",
+      "to": "decision-selling-price",
       "type": "RELATES_TO"
     }
   ]
