@@ -3,7 +3,8 @@
     "schema_version": "0.1.0",
     "meetings": [
       "2026-06-01-meeting1",
-      "2026-06-08-meeting2"
+      "2026-06-08-meeting2",
+      "2026-06-15-meeting3"
     ],
     "meetily_ingested": []
   },
@@ -169,6 +170,66 @@
       "supersedes": [],
       "confidence": 0.8,
       "owner": null
+    },
+    {
+      "id": "req-streamlined-design",
+      "type": "Requirement",
+      "title": "Streamlined Design",
+      "content": "The remote control should have a streamlined design, possibly with a touch screen, to make it more user-friendly and aesthetically pleasing.",
+      "status": "active",
+      "source_meeting": "2026-06-15-meeting3",
+      "created_at": "2026-07-11T19:47:53+00:00",
+      "supersedes": [],
+      "confidence": 0.8,
+      "owner": null
+    },
+    {
+      "id": "req-unique-selling-point",
+      "type": "Requirement",
+      "title": "Unique Selling Point",
+      "content": "The remote control should have a unique selling point, such as features beyond television control, to differentiate it from other products.",
+      "status": "active",
+      "source_meeting": "2026-06-15-meeting3",
+      "created_at": "2026-07-11T19:47:53+00:00",
+      "supersedes": [],
+      "confidence": 0.7,
+      "owner": null
+    },
+    {
+      "id": "req-cost-effective",
+      "type": "Constraint",
+      "title": "Cost-Effective",
+      "content": "The remote control design should be cost-effective, with production costs in mind.",
+      "status": "active",
+      "source_meeting": "2026-06-15-meeting3",
+      "created_at": "2026-07-11T19:47:53+00:00",
+      "supersedes": [],
+      "confidence": 0.9,
+      "owner": null
+    },
+    {
+      "id": "req-beyond-tv-control",
+      "type": "OpenQuestion",
+      "title": "Beyond TV Control",
+      "content": "Should the remote control have features that go beyond television control, such as controlling other devices in the home?",
+      "status": "active",
+      "source_meeting": "2026-06-15-meeting3",
+      "created_at": "2026-07-11T19:47:53+00:00",
+      "supersedes": [],
+      "confidence": 0.5,
+      "owner": null
+    },
+    {
+      "id": "decision-design-stage",
+      "type": "Decision",
+      "title": "Design Stage",
+      "content": "The next stage of the project will be the functional design stage, where the industrial designer will work on the actual design of the remote control.",
+      "status": "active",
+      "source_meeting": "2026-06-15-meeting3",
+      "created_at": "2026-07-11T19:47:53+00:00",
+      "supersedes": [],
+      "confidence": 0.9,
+      "owner": null
     }
   ],
   "edges": [
@@ -301,6 +362,51 @@
       "from": "open-question-competitive-pricing",
       "to": "decision-target-market",
       "type": "RELATES_TO"
+    },
+    {
+      "from": "req-streamlined-design",
+      "to": "2026-06-15-meeting3",
+      "type": "DECIDED_IN"
+    },
+    {
+      "from": "req-unique-selling-point",
+      "to": "2026-06-15-meeting3",
+      "type": "DECIDED_IN"
+    },
+    {
+      "from": "req-cost-effective",
+      "to": "2026-06-15-meeting3",
+      "type": "DECIDED_IN"
+    },
+    {
+      "from": "req-beyond-tv-control",
+      "to": "2026-06-15-meeting3",
+      "type": "DECIDED_IN"
+    },
+    {
+      "from": "decision-design-stage",
+      "to": "2026-06-15-meeting3",
+      "type": "DECIDED_IN"
+    },
+    {
+      "from": "req-streamlined-design",
+      "to": "req-unique-selling-point",
+      "type": "RELATES_TO"
+    },
+    {
+      "from": "req-cost-effective",
+      "to": "req-streamlined-design",
+      "type": "CONSTRAINTS"
+    },
+    {
+      "from": "req-beyond-tv-control",
+      "to": "req-unique-selling-point",
+      "type": "RELATES_TO"
+    },
+    {
+      "from": "decision-design-stage",
+      "to": "req-streamlined-design",
+      "type": "DECIDED_IN"
     }
   ]
 }
