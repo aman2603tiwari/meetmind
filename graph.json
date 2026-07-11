@@ -2,236 +2,170 @@
   "meta": {
     "schema_version": "0.1.0",
     "meetings": [
-      "m1",
-      "m2"
-    ]
+      "2026-06-01-meeting1"
+    ],
+    "meetily_ingested": []
   },
   "nodes": [
     {
-      "id": "decision-api-rest",
-      "type": "Decision",
-      "title": "API Type",
-      "content": "Use REST for the public API",
-      "status": "superseded",
-      "source_meeting": "m1",
-      "created_at": "2026-07-11T18:54:01+00:00",
-      "supersedes": [],
-      "confidence": 1.0,
-      "owner": null
-    },
-    {
-      "id": "decision-storage-postgres",
-      "type": "Decision",
-      "title": "Storage Type",
-      "content": "Use Postgres for the main datastore",
+      "id": "proj-remote-control-design",
+      "type": "Feature",
+      "title": "Remote Control Design",
+      "content": "Design a new remote control that is original, trendy, and user-friendly",
       "status": "active",
-      "source_meeting": "m1",
-      "created_at": "2026-07-11T18:54:01+00:00",
+      "source_meeting": "2026-06-01-meeting1",
+      "created_at": "2026-07-11T19:42:38+00:00",
       "supersedes": [],
       "confidence": 1.0,
-      "owner": null
+      "owner": "Laura"
     },
     {
-      "id": "req-idempotent-payments",
+      "id": "req-user-friendly-design",
       "type": "Requirement",
-      "title": "Idempotent Payments",
-      "content": "Every payment must be idempotent",
-      "status": "superseded",
-      "source_meeting": "m1",
-      "created_at": "2026-07-11T18:54:01+00:00",
+      "title": "User-Friendly Design",
+      "content": "The remote control should be user-friendly",
+      "status": "active",
+      "source_meeting": "2026-06-01-meeting1",
+      "created_at": "2026-07-11T19:42:38+00:00",
       "supersedes": [],
       "confidence": 1.0,
       "owner": null
     },
     {
-      "id": "open-question-refunds",
-      "type": "OpenQuestion",
-      "title": "Refund Support",
-      "content": "Do we support refunds in v1 or later?",
+      "id": "req-original-design",
+      "type": "Requirement",
+      "title": "Original Design",
+      "content": "The remote control should be original",
       "status": "active",
-      "source_meeting": "m1",
-      "created_at": "2026-07-11T18:54:01+00:00",
+      "source_meeting": "2026-06-01-meeting1",
+      "created_at": "2026-07-11T19:42:38+00:00",
       "supersedes": [],
-      "confidence": 0.0,
+      "confidence": 1.0,
       "owner": null
     },
     {
-      "id": "component-api-design",
+      "id": "req-trendy-design",
+      "type": "Requirement",
+      "title": "Trendy Design",
+      "content": "The remote control should be trendy",
+      "status": "active",
+      "source_meeting": "2026-06-01-meeting1",
+      "created_at": "2026-07-11T19:42:38+00:00",
+      "supersedes": [],
+      "confidence": 1.0,
+      "owner": null
+    },
+    {
+      "id": "proj-stage-1",
       "type": "Component",
-      "title": "API Design",
-      "content": "Design of the public API",
-      "status": "active",
-      "source_meeting": "m1",
-      "created_at": "2026-07-11T18:54:01+00:00",
-      "supersedes": [],
-      "confidence": 1.0,
-      "owner": "Bob"
-    },
-    {
-      "id": "decision-api-graphql",
-      "type": "Decision",
-      "title": "Public API is GraphQL",
-      "content": "The public API will now use GraphQL instead of REST",
-      "status": "active",
-      "source_meeting": "m2",
-      "created_at": "2026-07-11T18:54:54+00:00",
-      "supersedes": [
-        "decision-api-rest"
-      ],
-      "confidence": 1.0,
-      "owner": "Bob"
-    },
-    {
-      "id": "req-flexible-queries",
-      "type": "Requirement",
-      "title": "Flexible Queries",
-      "content": "The mobile team needs flexible queries",
-      "status": "active",
-      "source_meeting": "m2",
-      "created_at": "2026-07-11T18:54:54+00:00",
+      "title": "Stage 1",
+      "content": "Individual work on remote control design",
+      "status": "superseded",
+      "source_meeting": "2026-06-01-meeting1",
+      "created_at": "2026-07-11T19:42:38+00:00",
       "supersedes": [],
       "confidence": 1.0,
       "owner": null
     },
     {
-      "id": "req-refund-support",
-      "type": "Requirement",
-      "title": "Refund Support",
-      "content": "The system must support refunds in v1",
-      "status": "active",
-      "source_meeting": "m2",
-      "created_at": "2026-07-11T18:54:54+00:00",
-      "supersedes": [],
-      "confidence": 1.0,
-      "owner": null
-    },
-    {
-      "id": "req-idempotent-payments-v2",
-      "type": "Requirement",
-      "title": "Idempotent Payments",
-      "content": "The system must have idempotent payments",
-      "status": "active",
-      "source_meeting": "m2",
-      "created_at": "2026-07-11T18:54:54+00:00",
+      "id": "proj-stage-2",
+      "type": "Component",
+      "title": "Stage 2",
+      "content": "Meeting to discuss remote control design",
+      "status": "superseded",
+      "source_meeting": "2026-06-01-meeting1",
+      "created_at": "2026-07-11T19:42:38+00:00",
       "supersedes": [
-        "req-idempotent-payments"
+        "proj-stage-1"
       ],
       "confidence": 1.0,
       "owner": null
     },
     {
-      "id": "component-postgres",
+      "id": "proj-stage-3",
       "type": "Component",
-      "title": "Postgres Database",
-      "content": "Postgres is used as the database",
+      "title": "Stage 3",
+      "content": "Repeat of stages 1 and 2",
       "status": "active",
-      "source_meeting": "m2",
-      "created_at": "2026-07-11T18:54:54+00:00",
-      "supersedes": [],
+      "source_meeting": "2026-06-01-meeting1",
+      "created_at": "2026-07-11T19:42:38+00:00",
+      "supersedes": [
+        "proj-stage-2"
+      ],
       "confidence": 1.0,
       "owner": null
     }
   ],
   "edges": [
     {
-      "from": "decision-api-rest",
-      "to": "m1",
+      "from": "proj-remote-control-design",
+      "to": "2026-06-01-meeting1",
       "type": "DECIDED_IN"
     },
     {
-      "from": "decision-storage-postgres",
-      "to": "m1",
+      "from": "req-user-friendly-design",
+      "to": "2026-06-01-meeting1",
       "type": "DECIDED_IN"
     },
     {
-      "from": "req-idempotent-payments",
-      "to": "m1",
+      "from": "req-original-design",
+      "to": "2026-06-01-meeting1",
       "type": "DECIDED_IN"
     },
     {
-      "from": "open-question-refunds",
-      "to": "m1",
+      "from": "req-trendy-design",
+      "to": "2026-06-01-meeting1",
       "type": "DECIDED_IN"
     },
     {
-      "from": "component-api-design",
-      "to": "m1",
+      "from": "proj-stage-1",
+      "to": "2026-06-01-meeting1",
       "type": "DECIDED_IN"
     },
     {
-      "from": "decision-api-rest",
-      "to": "component-api-design",
+      "from": "proj-stage-2",
+      "to": "proj-stage-1",
+      "type": "SUPERSEDES"
+    },
+    {
+      "from": "proj-stage-2",
+      "to": "2026-06-01-meeting1",
+      "type": "DECIDED_IN"
+    },
+    {
+      "from": "proj-stage-3",
+      "to": "proj-stage-2",
+      "type": "SUPERSEDES"
+    },
+    {
+      "from": "proj-stage-3",
+      "to": "2026-06-01-meeting1",
+      "type": "DECIDED_IN"
+    },
+    {
+      "from": "proj-remote-control-design",
+      "to": "req-user-friendly-design",
       "type": "IMPLEMENTS"
     },
     {
-      "from": "decision-storage-postgres",
-      "to": "component-api-design",
+      "from": "proj-remote-control-design",
+      "to": "req-original-design",
       "type": "IMPLEMENTS"
     },
     {
-      "from": "req-idempotent-payments",
-      "to": "component-api-design",
+      "from": "proj-remote-control-design",
+      "to": "req-trendy-design",
+      "type": "IMPLEMENTS"
+    },
+    {
+      "from": "proj-stage-1",
+      "to": "proj-stage-2",
       "type": "DEPENDS_ON"
     },
     {
-      "from": "open-question-refunds",
-      "to": "component-api-design",
-      "type": "RELATES_TO"
-    },
-    {
-      "from": "decision-api-graphql",
-      "to": "decision-api-rest",
-      "type": "SUPERSEDES"
-    },
-    {
-      "from": "decision-api-graphql",
-      "to": "m2",
-      "type": "DECIDED_IN"
-    },
-    {
-      "from": "req-flexible-queries",
-      "to": "m2",
-      "type": "DECIDED_IN"
-    },
-    {
-      "from": "req-refund-support",
-      "to": "m2",
-      "type": "DECIDED_IN"
-    },
-    {
-      "from": "req-idempotent-payments-v2",
-      "to": "req-idempotent-payments",
-      "type": "SUPERSEDES"
-    },
-    {
-      "from": "req-idempotent-payments-v2",
-      "to": "m2",
-      "type": "DECIDED_IN"
-    },
-    {
-      "from": "component-postgres",
-      "to": "m2",
-      "type": "DECIDED_IN"
-    },
-    {
-      "from": "decision-api-graphql",
-      "to": "req-flexible-queries",
-      "type": "IMPLEMENTS"
-    },
-    {
-      "from": "req-refund-support",
-      "to": "decision-api-graphql",
-      "type": "RELATES_TO"
-    },
-    {
-      "from": "req-idempotent-payments-v2",
-      "to": "decision-api-graphql",
-      "type": "RELATES_TO"
-    },
-    {
-      "from": "component-postgres",
-      "to": "decision-api-graphql",
-      "type": "RELATES_TO"
+      "from": "proj-stage-2",
+      "to": "proj-stage-3",
+      "type": "DEPENDS_ON"
     }
   ]
 }
