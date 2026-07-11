@@ -1,0 +1,9 @@
+Alice: Okay, kickoff for the payments service. Let's lock some decisions.
+Bob: For the public API, I say we go REST — it's simple and everyone knows it.
+Alice: Agreed, REST it is for v1.
+Bob: Storage — Postgres? We need transactions.
+Alice: Yes, Postgres for the main datastore.
+Carol: One requirement: every payment must be idempotent, clients will retry.
+Alice: Good. Idempotent payment creation is a hard requirement.
+Bob: Open question — do we support refunds in v1 or later? Let's leave that open.
+Alice: Leave refunds open for now. Bob owns the API design.

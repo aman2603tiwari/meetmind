@@ -1,0 +1,117 @@
+{
+  "meta": {
+    "schema_version": "0.1.0",
+    "meetings": [
+      "m1"
+    ]
+  },
+  "nodes": [
+    {
+      "id": "decision-api-rest",
+      "type": "Decision",
+      "title": "API Type",
+      "content": "Use REST for the public API",
+      "status": "active",
+      "source_meeting": "m1",
+      "created_at": "2026-07-11T18:54:01+00:00",
+      "supersedes": [],
+      "confidence": 1.0,
+      "owner": null
+    },
+    {
+      "id": "decision-storage-postgres",
+      "type": "Decision",
+      "title": "Storage Type",
+      "content": "Use Postgres for the main datastore",
+      "status": "active",
+      "source_meeting": "m1",
+      "created_at": "2026-07-11T18:54:01+00:00",
+      "supersedes": [],
+      "confidence": 1.0,
+      "owner": null
+    },
+    {
+      "id": "req-idempotent-payments",
+      "type": "Requirement",
+      "title": "Idempotent Payments",
+      "content": "Every payment must be idempotent",
+      "status": "active",
+      "source_meeting": "m1",
+      "created_at": "2026-07-11T18:54:01+00:00",
+      "supersedes": [],
+      "confidence": 1.0,
+      "owner": null
+    },
+    {
+      "id": "open-question-refunds",
+      "type": "OpenQuestion",
+      "title": "Refund Support",
+      "content": "Do we support refunds in v1 or later?",
+      "status": "active",
+      "source_meeting": "m1",
+      "created_at": "2026-07-11T18:54:01+00:00",
+      "supersedes": [],
+      "confidence": 0.0,
+      "owner": null
+    },
+    {
+      "id": "component-api-design",
+      "type": "Component",
+      "title": "API Design",
+      "content": "Design of the public API",
+      "status": "active",
+      "source_meeting": "m1",
+      "created_at": "2026-07-11T18:54:01+00:00",
+      "supersedes": [],
+      "confidence": 1.0,
+      "owner": "Bob"
+    }
+  ],
+  "edges": [
+    {
+      "from": "decision-api-rest",
+      "to": "m1",
+      "type": "DECIDED_IN"
+    },
+    {
+      "from": "decision-storage-postgres",
+      "to": "m1",
+      "type": "DECIDED_IN"
+    },
+    {
+      "from": "req-idempotent-payments",
+      "to": "m1",
+      "type": "DECIDED_IN"
+    },
+    {
+      "from": "open-question-refunds",
+      "to": "m1",
+      "type": "DECIDED_IN"
+    },
+    {
+      "from": "component-api-design",
+      "to": "m1",
+      "type": "DECIDED_IN"
+    },
+    {
+      "from": "decision-api-rest",
+      "to": "component-api-design",
+      "type": "IMPLEMENTS"
+    },
+    {
+      "from": "decision-storage-postgres",
+      "to": "component-api-design",
+      "type": "IMPLEMENTS"
+    },
+    {
+      "from": "req-idempotent-payments",
+      "to": "component-api-design",
+      "type": "DEPENDS_ON"
+    },
+    {
+      "from": "open-question-refunds",
+      "to": "component-api-design",
+      "type": "RELATES_TO"
+    }
+  ]
+}
