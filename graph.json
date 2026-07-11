@@ -2,9 +2,6 @@
   "meta": {
     "schema_version": "0.1.0",
     "meetings": [
-      "2026-06-01-meeting1",
-      "2026-06-08-meeting2",
-      "2026-06-15-meeting3",
       "1st"
     ],
     "meetily_ingested": []
@@ -15,9 +12,9 @@
       "type": "Feature",
       "title": "Remote Control Design",
       "content": "Design a new remote control that is original, trendy, and user-friendly",
-      "status": "superseded",
-      "source_meeting": "2026-06-01-meeting1",
-      "created_at": "2026-07-11T19:42:38+00:00",
+      "status": "active",
+      "source_meeting": "1st",
+      "created_at": "2026-07-11T20:34:42+00:00",
       "supersedes": [],
       "confidence": 1.0,
       "owner": "Laura"
@@ -27,9 +24,9 @@
       "type": "Requirement",
       "title": "User-Friendly Design",
       "content": "The remote control should be user-friendly",
-      "status": "superseded",
-      "source_meeting": "2026-06-01-meeting1",
-      "created_at": "2026-07-11T19:42:38+00:00",
+      "status": "active",
+      "source_meeting": "1st",
+      "created_at": "2026-07-11T20:34:42+00:00",
       "supersedes": [],
       "confidence": 1.0,
       "owner": null
@@ -40,8 +37,8 @@
       "title": "Original Design",
       "content": "The remote control should be original",
       "status": "active",
-      "source_meeting": "2026-06-01-meeting1",
-      "created_at": "2026-07-11T19:42:38+00:00",
+      "source_meeting": "1st",
+      "created_at": "2026-07-11T20:34:42+00:00",
       "supersedes": [],
       "confidence": 1.0,
       "owner": null
@@ -52,211 +49,9 @@
       "title": "Trendy Design",
       "content": "The remote control should be trendy",
       "status": "active",
-      "source_meeting": "2026-06-01-meeting1",
-      "created_at": "2026-07-11T19:42:38+00:00",
-      "supersedes": [],
-      "confidence": 1.0,
-      "owner": null
-    },
-    {
-      "id": "proj-stage-1",
-      "type": "Component",
-      "title": "Stage 1",
-      "content": "Individual work on remote control design",
-      "status": "superseded",
-      "source_meeting": "2026-06-01-meeting1",
-      "created_at": "2026-07-11T19:42:38+00:00",
-      "supersedes": [],
-      "confidence": 1.0,
-      "owner": null
-    },
-    {
-      "id": "proj-stage-2",
-      "type": "Component",
-      "title": "Stage 2",
-      "content": "Meeting to discuss remote control design",
-      "status": "superseded",
-      "source_meeting": "2026-06-01-meeting1",
-      "created_at": "2026-07-11T19:42:38+00:00",
-      "supersedes": [
-        "proj-stage-1"
-      ],
-      "confidence": 1.0,
-      "owner": null
-    },
-    {
-      "id": "proj-stage-3",
-      "type": "Component",
-      "title": "Stage 3",
-      "content": "Repeat of stages 1 and 2",
-      "status": "active",
-      "source_meeting": "2026-06-01-meeting1",
-      "created_at": "2026-07-11T19:42:38+00:00",
-      "supersedes": [
-        "proj-stage-2"
-      ],
-      "confidence": 1.0,
-      "owner": null
-    },
-    {
-      "id": "req-international-compatibility",
-      "type": "Requirement",
-      "title": "International Compatibility",
-      "content": "The remote control should be compatible with different regions and countries, considering factors such as DVD player zones, frequencies, and character sets.",
-      "status": "active",
-      "source_meeting": "2026-06-08-meeting2",
-      "created_at": "2026-07-11T19:45:35+00:00",
-      "supersedes": [],
-      "confidence": 0.8,
-      "owner": null
-    },
-    {
-      "id": "req-cost-effectiveness",
-      "type": "Requirement",
-      "title": "Cost Effectiveness",
-      "content": "The production cost of the remote control should not exceed 50% of the selling price, which is 25 euros.",
-      "status": "active",
-      "source_meeting": "2026-06-08-meeting2",
-      "created_at": "2026-07-11T19:45:35+00:00",
-      "supersedes": [],
-      "confidence": 0.9,
-      "owner": null
-    },
-    {
-      "id": "req-user-friendly-design-v2",
-      "type": "Requirement",
-      "title": "User-Friendly Design",
-      "content": "The remote control should have a user-friendly design, potentially combining multiple uses into one device.",
-      "status": "superseded",
-      "source_meeting": "2026-06-08-meeting2",
-      "created_at": "2026-07-11T19:45:35+00:00",
-      "supersedes": [
-        "req-user-friendly-design"
-      ],
-      "confidence": 0.7,
-      "owner": null
-    },
-    {
-      "id": "decision-target-market",
-      "type": "Decision",
-      "title": "Target Market",
-      "content": "The remote control will be sold internationally, and its price may appeal to different markets in various regions.",
-      "status": "active",
-      "source_meeting": "2026-06-08-meeting2",
-      "created_at": "2026-07-11T19:45:35+00:00",
-      "supersedes": [],
-      "confidence": 0.8,
-      "owner": null
-    },
-    {
-      "id": "open-question-competitive-pricing",
-      "type": "OpenQuestion",
-      "title": "Competitive Pricing",
-      "content": "How does the price of the remote control compare to other similar products on the market?",
-      "status": "active",
-      "source_meeting": "2026-06-08-meeting2",
-      "created_at": "2026-07-11T19:45:35+00:00",
-      "supersedes": [],
-      "confidence": 0.5,
-      "owner": null
-    },
-    {
-      "id": "component-remote-control-design",
-      "type": "Component",
-      "title": "Remote Control Design",
-      "content": "The design of the remote control, including its features and functionality.",
-      "status": "active",
-      "source_meeting": "2026-06-08-meeting2",
-      "created_at": "2026-07-11T19:45:35+00:00",
-      "supersedes": [],
-      "confidence": 0.8,
-      "owner": null
-    },
-    {
-      "id": "req-streamlined-design",
-      "type": "Requirement",
-      "title": "Streamlined Design",
-      "content": "The remote control should have a streamlined design, possibly with a touch screen, to make it more user-friendly and aesthetically pleasing.",
-      "status": "active",
-      "source_meeting": "2026-06-15-meeting3",
-      "created_at": "2026-07-11T19:47:53+00:00",
-      "supersedes": [],
-      "confidence": 0.8,
-      "owner": null
-    },
-    {
-      "id": "req-unique-selling-point",
-      "type": "Requirement",
-      "title": "Unique Selling Point",
-      "content": "The remote control should have a unique selling point, such as features beyond television control, to differentiate it from other products.",
-      "status": "active",
-      "source_meeting": "2026-06-15-meeting3",
-      "created_at": "2026-07-11T19:47:53+00:00",
-      "supersedes": [],
-      "confidence": 0.7,
-      "owner": null
-    },
-    {
-      "id": "req-cost-effective",
-      "type": "Constraint",
-      "title": "Cost-Effective",
-      "content": "The remote control design should be cost-effective, with production costs in mind.",
-      "status": "active",
-      "source_meeting": "2026-06-15-meeting3",
-      "created_at": "2026-07-11T19:47:53+00:00",
-      "supersedes": [],
-      "confidence": 0.9,
-      "owner": null
-    },
-    {
-      "id": "req-beyond-tv-control",
-      "type": "OpenQuestion",
-      "title": "Beyond TV Control",
-      "content": "Should the remote control have features that go beyond television control, such as controlling other devices in the home?",
-      "status": "active",
-      "source_meeting": "2026-06-15-meeting3",
-      "created_at": "2026-07-11T19:47:53+00:00",
-      "supersedes": [],
-      "confidence": 0.5,
-      "owner": null
-    },
-    {
-      "id": "decision-design-stage",
-      "type": "Decision",
-      "title": "Design Stage",
-      "content": "The next stage of the project will be the functional design stage, where the industrial designer will work on the actual design of the remote control.",
-      "status": "active",
-      "source_meeting": "2026-06-15-meeting3",
-      "created_at": "2026-07-11T19:47:53+00:00",
-      "supersedes": [],
-      "confidence": 0.9,
-      "owner": null
-    },
-    {
-      "id": "proj-remote-control-design-v2",
-      "type": "Feature",
-      "title": "Remote Control Design",
-      "content": "Design a new remote control that is trendy and user-friendly",
-      "status": "active",
       "source_meeting": "1st",
-      "created_at": "2026-07-11T20:25:05+00:00",
-      "supersedes": [
-        "proj-remote-control-design"
-      ],
-      "confidence": 1.0,
-      "owner": "Laura"
-    },
-    {
-      "id": "req-user-friendly-design-v3",
-      "type": "Requirement",
-      "title": "User-Friendly Design",
-      "content": "The remote control should be user-friendly",
-      "status": "active",
-      "source_meeting": "1st",
-      "created_at": "2026-07-11T20:25:05+00:00",
-      "supersedes": [
-        "req-user-friendly-design-v2"
-      ],
+      "created_at": "2026-07-11T20:34:42+00:00",
+      "supersedes": [],
       "confidence": 1.0,
       "owner": null
     },
@@ -264,10 +59,10 @@
       "id": "proj-design-stages",
       "type": "Feature",
       "title": "Design Stages",
-      "content": "The design process will have three stages with individual work and meetings",
+      "content": "The design process will consist of three stages with individual work and meetings",
       "status": "active",
       "source_meeting": "1st",
-      "created_at": "2026-07-11T20:25:05+00:00",
+      "created_at": "2026-07-11T20:34:42+00:00",
       "supersedes": [],
       "confidence": 1.0,
       "owner": "Laura"
@@ -276,47 +71,27 @@
   "edges": [
     {
       "from": "proj-remote-control-design",
-      "to": "2026-06-01-meeting1",
+      "to": "1st",
       "type": "DECIDED_IN"
     },
     {
       "from": "req-user-friendly-design",
-      "to": "2026-06-01-meeting1",
+      "to": "1st",
       "type": "DECIDED_IN"
     },
     {
       "from": "req-original-design",
-      "to": "2026-06-01-meeting1",
+      "to": "1st",
       "type": "DECIDED_IN"
     },
     {
       "from": "req-trendy-design",
-      "to": "2026-06-01-meeting1",
+      "to": "1st",
       "type": "DECIDED_IN"
     },
     {
-      "from": "proj-stage-1",
-      "to": "2026-06-01-meeting1",
-      "type": "DECIDED_IN"
-    },
-    {
-      "from": "proj-stage-2",
-      "to": "proj-stage-1",
-      "type": "SUPERSEDES"
-    },
-    {
-      "from": "proj-stage-2",
-      "to": "2026-06-01-meeting1",
-      "type": "DECIDED_IN"
-    },
-    {
-      "from": "proj-stage-3",
-      "to": "proj-stage-2",
-      "type": "SUPERSEDES"
-    },
-    {
-      "from": "proj-stage-3",
-      "to": "2026-06-01-meeting1",
+      "from": "proj-design-stages",
+      "to": "1st",
       "type": "DECIDED_IN"
     },
     {
@@ -335,163 +110,8 @@
       "type": "IMPLEMENTS"
     },
     {
-      "from": "proj-stage-1",
-      "to": "proj-stage-2",
-      "type": "DEPENDS_ON"
-    },
-    {
-      "from": "proj-stage-2",
-      "to": "proj-stage-3",
-      "type": "DEPENDS_ON"
-    },
-    {
-      "from": "req-international-compatibility",
-      "to": "2026-06-08-meeting2",
-      "type": "DECIDED_IN"
-    },
-    {
-      "from": "req-cost-effectiveness",
-      "to": "2026-06-08-meeting2",
-      "type": "DECIDED_IN"
-    },
-    {
-      "from": "req-user-friendly-design-v2",
-      "to": "req-user-friendly-design",
-      "type": "SUPERSEDES"
-    },
-    {
-      "from": "req-user-friendly-design-v2",
-      "to": "2026-06-08-meeting2",
-      "type": "DECIDED_IN"
-    },
-    {
-      "from": "decision-target-market",
-      "to": "2026-06-08-meeting2",
-      "type": "DECIDED_IN"
-    },
-    {
-      "from": "open-question-competitive-pricing",
-      "to": "2026-06-08-meeting2",
-      "type": "DECIDED_IN"
-    },
-    {
-      "from": "component-remote-control-design",
-      "to": "2026-06-08-meeting2",
-      "type": "DECIDED_IN"
-    },
-    {
-      "from": "req-international-compatibility",
-      "to": "component-remote-control-design",
-      "type": "RELATES_TO"
-    },
-    {
-      "from": "req-cost-effectiveness",
-      "to": "component-remote-control-design",
-      "type": "RELATES_TO"
-    },
-    {
-      "from": "req-user-friendly-design-v2",
-      "to": "component-remote-control-design",
-      "type": "RELATES_TO"
-    },
-    {
-      "from": "decision-target-market",
-      "to": "req-international-compatibility",
-      "type": "DECIDED_IN"
-    },
-    {
-      "from": "open-question-competitive-pricing",
-      "to": "decision-target-market",
-      "type": "RELATES_TO"
-    },
-    {
-      "from": "req-streamlined-design",
-      "to": "2026-06-15-meeting3",
-      "type": "DECIDED_IN"
-    },
-    {
-      "from": "req-unique-selling-point",
-      "to": "2026-06-15-meeting3",
-      "type": "DECIDED_IN"
-    },
-    {
-      "from": "req-cost-effective",
-      "to": "2026-06-15-meeting3",
-      "type": "DECIDED_IN"
-    },
-    {
-      "from": "req-beyond-tv-control",
-      "to": "2026-06-15-meeting3",
-      "type": "DECIDED_IN"
-    },
-    {
-      "from": "decision-design-stage",
-      "to": "2026-06-15-meeting3",
-      "type": "DECIDED_IN"
-    },
-    {
-      "from": "req-streamlined-design",
-      "to": "req-unique-selling-point",
-      "type": "RELATES_TO"
-    },
-    {
-      "from": "req-cost-effective",
-      "to": "req-streamlined-design",
-      "type": "CONSTRAINTS"
-    },
-    {
-      "from": "req-beyond-tv-control",
-      "to": "req-unique-selling-point",
-      "type": "RELATES_TO"
-    },
-    {
-      "from": "decision-design-stage",
-      "to": "req-streamlined-design",
-      "type": "DECIDED_IN"
-    },
-    {
-      "from": "proj-remote-control-design-v2",
-      "to": "proj-remote-control-design",
-      "type": "SUPERSEDES"
-    },
-    {
-      "from": "proj-remote-control-design-v2",
-      "to": "1st",
-      "type": "DECIDED_IN"
-    },
-    {
-      "from": "req-user-friendly-design-v3",
-      "to": "req-user-friendly-design-v2",
-      "type": "SUPERSEDES"
-    },
-    {
-      "from": "req-user-friendly-design-v3",
-      "to": "1st",
-      "type": "DECIDED_IN"
-    },
-    {
-      "from": "req-trendy-design",
-      "to": "1st",
-      "type": "DECIDED_IN"
-    },
-    {
       "from": "proj-design-stages",
-      "to": "1st",
-      "type": "DECIDED_IN"
-    },
-    {
-      "from": "proj-remote-control-design-v2",
-      "to": "req-user-friendly-design-v3",
-      "type": "IMPLEMENTS"
-    },
-    {
-      "from": "proj-remote-control-design-v2",
-      "to": "req-trendy-design",
-      "type": "IMPLEMENTS"
-    },
-    {
-      "from": "proj-remote-control-design-v2",
-      "to": "proj-design-stages",
+      "to": "proj-remote-control-design",
       "type": "RELATES_TO"
     }
   ]
