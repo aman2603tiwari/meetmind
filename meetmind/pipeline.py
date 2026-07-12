@@ -70,7 +70,8 @@ def ingest_transcript(
         store.save_graph(graph_path, graph)
         tpath = store.save_transcript(repo_dir, meeting_id, transcript)
         store.git_commit(
-            repo_dir, [graph_path, tpath], f"meeting {meeting_id}: {len(changelog)} changes"
+            repo_dir, [str(Path(graph_path).resolve()), tpath],
+            f"meeting {meeting_id}: {len(changelog)} changes",
         )
 
     return graph, changelog

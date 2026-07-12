@@ -51,7 +51,7 @@ def _ingest_one(graph, transcript, meeting_id, repo_dir, args, meetily_id=None):
     if args.dry_run:
         print("[dry-run] not written/committed.", file=sys.stderr)
     else:
-        print("[commit] done.", file=sys.stderr)
+        print(f"[commit] done -> {args.graph}", file=sys.stderr)
     return graph
 
 
@@ -123,7 +123,7 @@ def cmd_ingest(args) -> int:
 
 def _cmd_ingest_routed(args, transcript, meeting_id) -> int:
     """Route ONE meeting into multiple per-project graphs (multi-project meeting)."""
-    graph_dir = args.graph_dir or "context-graphs"
+    graph_dir = args.graph_dir or str(Path(DATA_DIR) / "context-graphs")
     print(f"[route] extracting + splitting '{meeting_id}' across projects ...", file=sys.stderr)
     results = pipeline.ingest_transcript_routed(
         transcript, meeting_id, graph_dir, commit=not args.dry_run
@@ -308,8 +308,8 @@ def cmd_viz(args) -> int:
             print(text)
         return 0
 
-    # png
-    out = args.out or "graph.png"
+    # png — default beside the graph (e.g. meetmind_data/graph.png)
+    out = args.out or str(Path(args.graph).with_suffix(".png"))
     print(f"rendering via {viz.available_renderer()} ...", file=sys.stderr)
     path = viz.render_png(graph, out, include)
     print(f"wrote {path}", file=sys.stderr)
@@ -327,6 +327,11 @@ def _add_graph_arg(parser: argparse.ArgumentParser, positional: bool = False) ->
                         help="scope to a named project -> context-graphs/<project>.json")
 
 
+# All generated files live under this folder in the working directory, so a
+# meetmind project stays tidy (graph, per-project graphs, transcripts, images).
+DATA_DIR = "meetmind_data"
+
+
 def _resolve_graph_path(args) -> None:
     """Fill args.graph from a positional path, --project, or the default."""
     if getattr(args, "graph", None):
@@ -337,9 +342,9 @@ def _resolve_graph_path(args) -> None:
         return
     project = getattr(args, "project", None)
     if project:
-        args.graph = str(Path("context-graphs") / f"{_slugify(project)}.json")
+        args.graph = str(Path(DATA_DIR) / "context-graphs" / f"{_slugify(project)}.json")
     else:
-        args.graph = "graph.json"
+        args.graph = str(Path(DATA_DIR) / "graph.json")
 
 
 def build_parser() -> argparse.ArgumentParser:
