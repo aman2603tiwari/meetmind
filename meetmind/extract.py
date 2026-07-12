@@ -41,10 +41,13 @@ Return ONLY a JSON object of this exact shape (no prose, no markdown fences):
 Rules:
 - Choose ids that describe the thing (e.g. "decision-api-graphql", "req-user-login"),
   so the SAME concept discussed in a later meeting naturally gets a similar id.
-- You are given EXISTING ACTIVE NODES from prior meetings. If this meeting CHANGES,
-  REVERSES, or REPLACES one of them, emit the NEW node and set its "supersedes" to
-  the exact existing id(s) it replaces. If it merely repeats an existing node
-  unchanged, do NOT emit it again. Only emit new or changed information.
+- Emit a node for EVERY durable decision/requirement/constraint/etc. in THIS
+  transcript. The EXISTING ACTIVE NODES below are only context from prior meetings —
+  they are NOT a filter. A statement on a completely unrelated topic MUST still be
+  emitted. The ONLY thing you skip is a statement an existing node already captures
+  verbatim and unchanged.
+- If this meeting CHANGES, REVERSES, or REPLACES an existing node, emit the NEW node
+  and set its "supersedes" to the exact existing id(s) it replaces.
 - A reversed/changed decision is still a Decision node describing the NEW choice,
   with "supersedes" pointing at the old decision's id.
 - Use OpenQuestion for anything explicitly left unresolved — the agent must not assume it.
@@ -127,7 +130,11 @@ def extract(
 
     existing_block = _existing_nodes_block(existing_nodes, routed=routed)
     last_err: Exception | None = None
-    for attempt in range(2):
+    last_empty: CandidateGraph | None = None
+    # The model is non-deterministic and occasionally returns an empty node list
+    # for a content-full transcript. Retry a few times, treating empty as a miss;
+    # only accept empty if every attempt agrees the transcript has nothing.
+    for attempt in range(3):
         try:
             raw = _call_groq(transcript, api_key, True, system, existing_block)
             data = json.loads(_strip_fences(raw))
@@ -135,7 +142,11 @@ def extract(
             for node in candidate.nodes:
                 node.source_meeting = meeting_id
                 node.status = "active"
-            return candidate
-        except Exception as err:  # parse or validation failure → retry once
+            if candidate.nodes:
+                return candidate
+            last_empty = candidate  # empty → retry in case it's a model miss
+        except Exception as err:  # parse or validation failure → retry
             last_err = err
+    if last_empty is not None:
+        return last_empty  # genuinely nothing extractable after retries
     raise ValueError(f"extraction failed after retries: {last_err}")

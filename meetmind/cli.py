@@ -45,6 +45,8 @@ def _ingest_one(graph, transcript, meeting_id, repo_dir, args, meetily_id=None):
     print(f"=== changes for '{meeting_id}' ===")
     for line in changelog:
         print("  " + line)
+    if not changelog:
+        print("  (no changes — the extractor found nothing new in this transcript)")
     print(f"=== graph now: {len(graph.active_nodes())} active / {len(graph.nodes)} total ===\n")
     if args.dry_run:
         print("[dry-run] not written/committed.", file=sys.stderr)
