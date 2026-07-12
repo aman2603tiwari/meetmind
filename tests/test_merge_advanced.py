@@ -7,8 +7,8 @@ from __future__ import annotations
 
 import sys
 
-from context_graph.merge import merge
-from context_graph.schema import CandidateGraph, Graph, Node
+from meetmind.merge import merge
+from meetmind.schema import CandidateGraph, Graph, Node
 
 
 def _cand(nodes):

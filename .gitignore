@@ -19,4 +19,4 @@ context-graphs/
 
 # holds the shared Groq key — ships in the PyPI wheel but must NOT hit public git
 # (GitHub + Groq secret-scanning would auto-revoke it)
-context_graph/_apikey.py
+meetmind/_apikey.py

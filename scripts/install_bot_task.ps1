@@ -1,4 +1,4 @@
-# Register the context-graph Slack bot as a per-user Scheduled Task that starts
+# Register the meetmind Slack bot as a per-user Scheduled Task that starts
 # at logon and restarts if it stops. No administrator rights required.
 #
 # Run once:   powershell -ExecutionPolicy Bypass -File scripts\install_bot_task.ps1

@@ -1,16 +1,16 @@
 """CLI: transcript -> extract -> merge -> graph.json -> git commit.
 
 Usage:
-    python -m context_graph ingest TRANSCRIPT.txt --meeting-id 2026-07-12-standup
-    python -m context_graph ingest --paste "we'll use REST..." --meeting-id m1
-    python -m context_graph ingest --audio meeting.mp3 --meeting-id m1
-    python -m context_graph ingest --meetily                 # latest Meetily meeting
-    python -m context_graph ingest --new                     # all un-ingested Meetily meetings
-    python -m context_graph ingest --since 2026-07-01        # Meetily meetings since a date
-    python -m context_graph ingest ... --dry-run     # show changes, don't commit
-    python -m context_graph show                      # print active nodes
-    python -m context_graph delta                     # git diff of last meeting
-    python -m context_graph meetily-list              # list Meetily meetings
+    python -m meetmind ingest TRANSCRIPT.txt --meeting-id 2026-07-12-standup
+    python -m meetmind ingest --paste "we'll use REST..." --meeting-id m1
+    python -m meetmind ingest --audio meeting.mp3 --meeting-id m1
+    python -m meetmind ingest --meetily                 # latest Meetily meeting
+    python -m meetmind ingest --new                     # all un-ingested Meetily meetings
+    python -m meetmind ingest --since 2026-07-01        # Meetily meetings since a date
+    python -m meetmind ingest ... --dry-run     # show changes, don't commit
+    python -m meetmind show                      # print active nodes
+    python -m meetmind delta                     # git diff of last meeting
+    python -m meetmind meetily-list              # list Meetily meetings
 """
 
 from __future__ import annotations

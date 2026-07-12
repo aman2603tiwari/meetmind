@@ -11,9 +11,9 @@ import tempfile
 import wave
 from pathlib import Path
 
-from context_graph import docread, export, review, timeline, validate
-from context_graph.merge import merge
-from context_graph.schema import CandidateGraph, Graph, Node
+from meetmind import docread, export, review, timeline, validate
+from meetmind.merge import merge
+from meetmind.schema import CandidateGraph, Graph, Node
 
 
 def _cand(nodes):
@@ -107,7 +107,7 @@ def test_docread_captions():
 
 
 def test_mention_parsing():
-    from context_graph.slackbot import parse_mention
+    from meetmind.slackbot import parse_mention
     assert parse_mention("<@U1> graph", "U1")[0] == "graph"
     assert parse_mention("<@U1> note use Redis for caching", "U1") == ("ingest", "use Redis for caching")
     cmd, pay = parse_mention("<@U1> we decided the api must be graphql and auth via jwt tokens", "U1")
@@ -116,7 +116,7 @@ def test_mention_parsing():
 
 
 def test_wav_split():
-    from context_graph import audio
+    from meetmind import audio
     with tempfile.TemporaryDirectory() as td:
         src = Path(td) / "big.wav"
         # ~1.5s of silence, 44.1kHz 16-bit mono
@@ -131,8 +131,8 @@ def test_wav_split():
 
 def test_project_routing():
     """One meeting's candidate nodes split into separate per-project graphs."""
-    from context_graph import pipeline, projects, store
-    import context_graph.extract as ex
+    from meetmind import pipeline, projects, store
+    import meetmind.extract as ex
 
     def fake(transcript, meeting_id, api_key=None, existing_nodes=None, known_projects=None):
         return CandidateGraph(nodes=[
@@ -157,9 +157,9 @@ def test_project_routing():
 
 def test_cross_project_edges():
     """An edge between nodes in different projects becomes a namespaced reference."""
-    from context_graph import export, pipeline, store, validate
-    import context_graph.extract as ex
-    from context_graph.schema import Edge
+    from meetmind import export, pipeline, store, validate
+    import meetmind.extract as ex
+    from meetmind.schema import Edge
 
     def fake(transcript, meeting_id, api_key=None, existing_nodes=None, known_projects=None):
         return CandidateGraph(
@@ -189,7 +189,7 @@ def test_cross_project_edges():
 def test_record_watch():
     """watch_for_recording detects a new meeting and finalises when it stabilises."""
     import sqlite3
-    from context_graph import meetily, record
+    from meetmind import meetily, record
 
     with tempfile.TemporaryDirectory() as td:
         dbp = str(Path(td) / "meeting_minutes.sqlite")
@@ -246,7 +246,7 @@ def test_record_watch():
 def test_record_stop_before_meeting():
     """Ctrl+C before any recording returns None (nothing to ingest)."""
     import sqlite3
-    from context_graph import record
+    from meetmind import record
 
     with tempfile.TemporaryDirectory() as td:
         dbp = str(Path(td) / "meeting_minutes.sqlite")

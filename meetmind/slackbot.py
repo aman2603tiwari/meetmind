@@ -16,7 +16,7 @@ Run (Socket Mode — no public URL needed):
   export SLACK_APP_TOKEN=xapp-...     # app-level token with connections:write
   export GROQ_API_KEY=...
   export CG_GRAPH_PATH=graph.json     # optional, default graph.json
-  python -m context_graph.slackbot
+  python -m meetmind.slackbot
 
 Required bot scopes: app_mentions:read, channels:history, channels:read,
   files:read, files:write, chat:write, groups:history + groups:read (private).
@@ -410,7 +410,7 @@ def main() -> None:
 
     cfg = Config()
     app = build_app(cfg)
-    print(f"context-graph Slack bot up. graph={cfg.graph_path}, "
+    print(f"meetmind Slack bot up. graph={cfg.graph_path}, "
           f"renderer={viz.available_renderer()}")
     SocketModeHandler(app, os.environ["SLACK_APP_TOKEN"]).start()
 

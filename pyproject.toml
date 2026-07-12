@@ -4,10 +4,10 @@ build-backend = "setuptools.build_meta"
 
 [project]
 # PyPI *distribution* name (what people `pip install`). Verified available.
-# The internal import name stays `context_graph` — that's fine and normal
+# The internal import name stays `meetmind` — that's fine and normal
 # (like `pip install scikit-learn` -> `import sklearn`).
 name = "meetmind"
-version = "0.1.2"
+version = "0.1.3"
 description = "Turn meeting transcripts into a temporal context graph for coding agents."
 readme = "README.md"
 requires-python = ">=3.10"
@@ -35,15 +35,15 @@ dependencies = [
 
 [project.optional-dependencies]
 # Rendered graph images (also needs the `dot` system binary; falls back to
-# mermaid.ink if absent).  pip install "context-graph[viz]"
+# mermaid.ink if absent).  pip install "meetmind[viz]"
 viz = ["graphviz>=0.20"]
-# Slack bot interface.  pip install "context-graph[bot]"
+# Slack bot interface.  pip install "meetmind[bot]"
 bot = ["slack-bolt>=1.18"]
-# Read uploaded documents (PDF / DOCX).  pip install "context-graph[docs]"
+# Read uploaded documents (PDF / DOCX).  pip install "meetmind[docs]"
 docs = ["pypdf>=4.0", "python-docx>=1.1"]
 # Semantic entity resolution (local, offline embeddings).
 embeddings = ["sentence-transformers>=2.2"]
-# Everything.  pip install "context-graph[all]"
+# Everything.  pip install "meetmind[all]"
 all = [
     "graphviz>=0.20",
     "slack-bolt>=1.18",
@@ -58,10 +58,10 @@ Repository = "https://github.com/aman2603tiwari/meetmind"
 
 [project.scripts]
 # `meetmind <cmd>`  -> your existing CLI (ingest / show / viz / export / ...)
-meetmind = "context_graph.cli:main"
+meetmind = "meetmind.cli:main"
 # `meetmind-bot`    -> the Slack bot (needs the [bot] extra + tokens)
-meetmind-bot = "context_graph.slackbot:main"
+meetmind-bot = "meetmind.slackbot:main"
 
 [tool.setuptools.packages.find]
-# ship the context_graph package (and any subpackages); leave out tests/samples
-include = ["context_graph*"]
+# ship the meetmind package (and any subpackages); leave out tests/samples
+include = ["meetmind*"]
