@@ -7,7 +7,7 @@ build-backend = "setuptools.build_meta"
 # The internal import name stays `meetmind` — that's fine and normal
 # (like `pip install scikit-learn` -> `import sklearn`).
 name = "meetmind"
-version = "0.1.7"
+version = "0.1.8"
 description = "Turn meeting transcripts into a temporal context graph for coding agents."
 readme = "README.md"
 requires-python = ">=3.10"

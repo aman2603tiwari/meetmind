@@ -22,6 +22,10 @@ _resolved = False
 _label = "none"
 
 
+def _opted_in() -> bool:
+    return os.environ.get("MEETMIND_EMBEDDINGS", os.environ.get("CG_EMBEDDINGS", "0")) not in ("0", "", None)
+
+
 def _try_sentence_transformers() -> Optional[Embedder]:
     try:
         from sentence_transformers import SentenceTransformer
@@ -70,6 +74,11 @@ def get_embedder(force: str | None = None) -> Optional[Embedder]:
         _cached, _label = _try_sentence_transformers(), "sentence-transformers"
     elif force == "gemini":
         _cached, _label = _try_gemini(), "gemini"
+    elif not _opted_in():
+        # Semantic matching is opt-in: even when sentence-transformers is
+        # installed (e.g. via meetmind[all]), don't load a torch model on every
+        # ingest. Enable with MEETMIND_EMBEDDINGS=1. String matching is the default.
+        _cached, _label = None, "none (set MEETMIND_EMBEDDINGS=1 for semantic matching)"
     else:
         st = _try_sentence_transformers()
         if st is not None:
