@@ -49,6 +49,15 @@ Optional extras: `[bot]` (Slack), `[viz]` (PNG graphs — also needs the `dot` b
 
 ## Quick start
 
+Run this first — it checks what's ready, what's missing, and what to do next:
+
+```bash
+meetmind setup
+```
+
+It tells you whether Meetily (the recorder), a Groq key, and Graphviz are in place,
+and prints the exact commands to run. Bare `meetmind` shows the same guide.
+
 ### Record a live meeting
 
 Capture with [Meetily](https://github.com/Zackriya-Solutions/meetily) (free, local, private),

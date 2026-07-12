@@ -62,8 +62,15 @@ def _resolve_db(db_path: str | None) -> Path:
                 p = legacy
     if not p.exists():
         raise FileNotFoundError(
-            f"Meetily database not found at {p}. Pass --meetily-db PATH, or open "
-            f"Meetily and use 'Open Database Folder' to find meeting_minutes.sqlite."
+            "Meetily is not set up — it's the (free, local) app that RECORDS your meetings;\n"
+            "meetmind reads the transcripts it produces.\n\n"
+            "  1. Install Meetily: https://github.com/Zackriya-Solutions/meetily/releases\n"
+            "  2. Open it, allow mic + system audio, and record a meeting.\n"
+            "  3. Then run:  meetmind ingest --meetily\n\n"
+            "Run 'meetmind setup' for a full checklist.\n"
+            "(No meeting to record? You can still use: meetmind ingest --paste \"...\")\n"
+            f"Looked for the database at: {p}\n"
+            "If Meetily is installed elsewhere, pass --meetily-db PATH."
         )
     return p
 

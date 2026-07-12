@@ -16,6 +16,7 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import os
 import sys
 from pathlib import Path
 
@@ -180,6 +181,86 @@ def cmd_record(args) -> int:
     repo_dir = str(Path(args.graph).resolve().parent)
     graph = store.load_graph(args.graph)
     _ingest_one(graph, transcript, meeting_id, repo_dir, args, meetily_id=rec.meeting_id)
+    return 0
+
+
+MEETILY_RELEASES = "https://github.com/Zackriya-Solutions/meetily/releases"
+
+
+def cmd_setup(args) -> int:
+    """Getting-started check: what's ready, what's missing, and what to run next."""
+    from . import meetily, viz
+    from ._apikey import resolve_groq_key
+
+    ok, missing = "✔", "✖"
+    print("meetmind — turn meetings into a context graph your coding agent can build from.\n")
+    print("Checking your setup:\n")
+
+    # 1. LLM key (transcription + extraction)
+    key = resolve_groq_key()
+    if key:
+        source = "your GROQ_API_KEY" if os.environ.get("GROQ_API_KEY") else "the bundled shared key"
+        print(f"  {ok} LLM (Groq)      using {source}")
+    else:
+        print(f"  {missing} LLM (Groq)      no key. Get a free one at https://console.groq.com")
+        print("                    then:  setx GROQ_API_KEY \"gsk_...\"")
+
+    # 2. Meetily — the recorder meetmind reads from
+    db = meetily.default_db_path()
+    if db.exists():
+        try:
+            n = len(meetily.list_meetings(limit=1000))
+        except Exception:
+            n = "?"
+        print(f"  {ok} Meetily         found ({n} recorded meeting(s))")
+    else:
+        print(f"  {missing} Meetily         not installed — this is what RECORDS your meetings.")
+        print(f"                    Install (free, local, private): {MEETILY_RELEASES}")
+
+    # 3. Graph images
+    renderer = viz.available_renderer()
+    if renderer == "graphviz":
+        print(f"  {ok} Graph images    graphviz (offline)")
+    else:
+        print(f"  ~ Graph images    using {renderer}. Install Graphviz for offline rendering:")
+        print("                    winget install Graphviz.Graphviz")
+
+    print("\n" + "-" * 62)
+    if not db.exists():
+        print("""
+NEXT STEP — install Meetily, then record a real meeting:
+
+  1. Install Meetily:  """ + MEETILY_RELEASES + """
+  2. Open it, allow microphone + system audio, click Record.
+  3. Talk (or join a Meet/Zoom call), then Stop.
+  4. Pull it into your graph:
+
+       meetmind ingest --meetily        # ingest the meeting you just recorded
+       meetmind show                    # see the decisions it extracted
+
+     ...or capture live, hands-off:
+
+       meetmind record --link <meeting-url>
+       (start recording in Meetily; meetmind auto-ingests when the call ends)
+""")
+    else:
+        print("""
+You're ready. Record in Meetily, then:
+
+  meetmind ingest --meetily        # ingest your latest recording
+  meetmind record --link <url>     # or watch a live call and auto-ingest
+""")
+
+    print("""No meeting handy? Try it right now with pasted text:
+
+  meetmind ingest --paste "We'll use GraphQL and Postgres; auth via JWT." --meeting-id m1
+  meetmind ingest --paste "Actually, switch the API to REST." --meeting-id m2
+  meetmind show          # REST is active; GraphQL is superseded
+  meetmind delta         # what changed this meeting
+  meetmind export        # the spec to hand your coding agent
+
+Everything is written under ./meetmind_data/   ·   Docs: https://github.com/aman2603tiwari/meetmind
+""")
     return 0
 
 
@@ -350,7 +431,9 @@ def _resolve_graph_path(args) -> None:
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(prog="meetmind", description=__doc__)
     _add_graph_arg(p)  # also accepted before the subcommand
-    sub = p.add_subparsers(dest="command", required=True)
+    # no subcommand -> show the getting-started guide instead of an argparse error
+    p.set_defaults(func=cmd_setup)
+    sub = p.add_subparsers(dest="command", required=False)
 
     ing = sub.add_parser("ingest", help="ingest a meeting into the graph")
     ing.add_argument("source", nargs="?", help="transcript file (.txt/.md)")
@@ -393,6 +476,9 @@ def build_parser() -> argparse.ArgumentParser:
     rec.add_argument("--dry-run", action="store_true", help="show changes without writing/committing")
     _add_graph_arg(rec)
     rec.set_defaults(func=cmd_record)
+
+    st = sub.add_parser("setup", help="check your setup and show how to get started")
+    st.set_defaults(func=cmd_setup)
 
     ml = sub.add_parser("meetily-list", help="list recent meetings in Meetily's DB")
     ml.add_argument("--meetily-db", help="path to meeting_minutes.sqlite (auto-detected if omitted)")
@@ -454,7 +540,16 @@ def main(argv: list[str] | None = None) -> int:
     load_dotenv()  # so GROQ_API_KEY etc. can live in a .env file
     args = build_parser().parse_args(argv)
     _resolve_graph_path(args)
-    return args.func(args)
+    try:
+        return args.func(args)
+    except (FileNotFoundError, RuntimeError, ValueError) as err:
+        # expected, actionable problems (missing Meetily/key/file) — show the
+        # message, not a traceback.
+        print(f"\n{err}\n", file=sys.stderr)
+        return 1
+    except KeyboardInterrupt:
+        print("\ninterrupted.", file=sys.stderr)
+        return 130
 
 
 if __name__ == "__main__":
