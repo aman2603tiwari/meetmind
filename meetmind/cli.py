@@ -314,7 +314,10 @@ def cmd_viz(args) -> int:
     return 0
 
 
-def _add_graph_arg(parser: argparse.ArgumentParser) -> None:
+def _add_graph_arg(parser: argparse.ArgumentParser, positional: bool = False) -> None:
+    if positional:
+        parser.add_argument("graph_pos", nargs="?", default=None, metavar="GRAPH",
+                            help="graph json path (same as --graph; default: graph.json)")
     parser.add_argument("--graph", default=None,
                         help="explicit path to the graph json (default: graph.json, "
                              "or context-graphs/<project>.json with --project)")
@@ -323,8 +326,12 @@ def _add_graph_arg(parser: argparse.ArgumentParser) -> None:
 
 
 def _resolve_graph_path(args) -> None:
-    """Fill args.graph from --project when not given explicitly."""
+    """Fill args.graph from a positional path, --project, or the default."""
     if getattr(args, "graph", None):
+        return
+    pos = getattr(args, "graph_pos", None)
+    if pos:
+        args.graph = pos
         return
     project = getattr(args, "project", None)
     if project:
@@ -386,11 +393,11 @@ def build_parser() -> argparse.ArgumentParser:
     ml.set_defaults(func=cmd_meetily_list)
 
     sh = sub.add_parser("show", help="print current active nodes")
-    _add_graph_arg(sh)
+    _add_graph_arg(sh, positional=True)
     sh.set_defaults(func=cmd_show)
 
     dl = sub.add_parser("delta", help="git diff of the last meeting's graph change")
-    _add_graph_arg(dl)
+    _add_graph_arg(dl, positional=True)
     dl.set_defaults(func=cmd_delta)
 
     vz = sub.add_parser("viz", help="render the graph to a png / dot / mermaid")
@@ -398,27 +405,27 @@ def build_parser() -> argparse.ArgumentParser:
     vz.add_argument("--format", choices=["png", "dot", "mermaid"], default="png")
     vz.add_argument("--active-only", action="store_true",
                     help="hide superseded/deprecated nodes")
-    _add_graph_arg(vz)
+    _add_graph_arg(vz, positional=True)
     vz.set_defaults(func=cmd_viz)
 
     va = sub.add_parser("validate", help="check graph integrity")
-    _add_graph_arg(va)
+    _add_graph_arg(va, positional=True)
     va.set_defaults(func=cmd_validate)
 
     ex = sub.add_parser("export", help="export the ACTIVE-state spec for a coding agent")
     ex.add_argument("--format", choices=["md", "json"], default="md")
     ex.add_argument("--out", help="output file (default: stdout)")
-    _add_graph_arg(ex)
+    _add_graph_arg(ex, positional=True)
     ex.set_defaults(func=cmd_export)
 
     tl = sub.add_parser("timeline", help="meeting-by-meeting evolution of the graph")
     tl.add_argument("--format", choices=["md", "mermaid"], default="md")
     tl.add_argument("--out", help="output file (default: stdout)")
-    _add_graph_arg(tl)
+    _add_graph_arg(tl, positional=True)
     tl.set_defaults(func=cmd_timeline)
 
     rv = sub.add_parser("review", help="list proposed (low-confidence) nodes")
-    _add_graph_arg(rv)
+    _add_graph_arg(rv, positional=True)
     rv.set_defaults(func=cmd_review)
 
     cf = sub.add_parser("confirm", help="confirm a proposed node (or --all)")
