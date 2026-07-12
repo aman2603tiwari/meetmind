@@ -1,0 +1,58 @@
+{
+  "meta": {
+    "schema_version": "0.1.0",
+    "project": "marketing-automation",
+    "meetings": [
+      "recording"
+    ],
+    "meetily_ingested": [],
+    "ingested_hashes": [
+      "7bf49976bafb4b9f49681aeba116524f0ba75b096213d27dc02171ab7acd99fc"
+    ]
+  },
+  "nodes": [
+    {
+      "id": "proj-marketing-automation",
+      "type": "Component",
+      "title": "Marketing Automation Project",
+      "content": "Complete marketing automation by analyzing call endings",
+      "status": "active",
+      "source_meeting": "recording",
+      "created_at": "2026-07-11T22:25:41+00:00",
+      "supersedes": [],
+      "confidence": 1.0,
+      "owner": null,
+      "project": "marketing-automation"
+    },
+    {
+      "id": "req-automation-completion",
+      "type": "Requirement",
+      "title": "Automation Completion",
+      "content": "Complete marketing automation by tomorrow",
+      "status": "active",
+      "source_meeting": "recording",
+      "created_at": "2026-07-11T22:25:41+00:00",
+      "supersedes": [],
+      "confidence": 1.0,
+      "owner": null,
+      "project": "marketing-automation"
+    }
+  ],
+  "edges": [
+    {
+      "from": "proj-marketing-automation",
+      "to": "recording",
+      "type": "DECIDED_IN"
+    },
+    {
+      "from": "req-automation-completion",
+      "to": "recording",
+      "type": "DECIDED_IN"
+    },
+    {
+      "from": "proj-marketing-automation",
+      "to": "req-automation-completion",
+      "type": "IMPLEMENTS"
+    }
+  ]
+}

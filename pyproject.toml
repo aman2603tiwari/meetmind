@@ -1,0 +1,67 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+# PyPI *distribution* name (what people `pip install`). Verified available.
+# The internal import name stays `context_graph` — that's fine and normal
+# (like `pip install scikit-learn` -> `import sklearn`).
+name = "meetmind"
+version = "0.1.2"
+description = "Turn meeting transcripts into a temporal context graph for coding agents."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Aman Tiwari" }]
+keywords = ["meetings", "knowledge-graph", "transcription", "llm", "coding-agent", "groq"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Office/Business",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+]
+
+# Core dependencies — installed for everyone. Kept minimal so the base install
+# is light; heavier/optional features live under [project.optional-dependencies].
+dependencies = [
+    "groq>=0.11.0",
+    "pydantic>=2.6,<3",
+    "requests>=2.31",
+]
+
+[project.optional-dependencies]
+# Rendered graph images (also needs the `dot` system binary; falls back to
+# mermaid.ink if absent).  pip install "context-graph[viz]"
+viz = ["graphviz>=0.20"]
+# Slack bot interface.  pip install "context-graph[bot]"
+bot = ["slack-bolt>=1.18"]
+# Read uploaded documents (PDF / DOCX).  pip install "context-graph[docs]"
+docs = ["pypdf>=4.0", "python-docx>=1.1"]
+# Semantic entity resolution (local, offline embeddings).
+embeddings = ["sentence-transformers>=2.2"]
+# Everything.  pip install "context-graph[all]"
+all = [
+    "graphviz>=0.20",
+    "slack-bolt>=1.18",
+    "pypdf>=4.0",
+    "python-docx>=1.1",
+    "sentence-transformers>=2.2",
+]
+
+[project.urls]
+Homepage = "https://github.com/aman2603tiwari/meetmind"
+Repository = "https://github.com/aman2603tiwari/meetmind"
+
+[project.scripts]
+# `meetmind <cmd>`  -> your existing CLI (ingest / show / viz / export / ...)
+meetmind = "context_graph.cli:main"
+# `meetmind-bot`    -> the Slack bot (needs the [bot] extra + tokens)
+meetmind-bot = "context_graph.slackbot:main"
+
+[tool.setuptools.packages.find]
+# ship the context_graph package (and any subpackages); leave out tests/samples
+include = ["context_graph*"]

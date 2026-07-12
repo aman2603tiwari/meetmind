@@ -1,0 +1,22 @@
+__pycache__/
+*.pyc
+.env
+.venv/
+venv/
+
+# build artifacts
+build/
+dist/
+*.egg-info/
+meetmind-*/
+
+# raw meeting recordings (heavy / private) — samples live under samples/
+files/
+
+# live working graphs + transcripts (regenerated locally; curated copies in samples/)
+context-graphs/
+/graph.json
+
+# holds the shared Groq key — ships in the PyPI wheel but must NOT hit public git
+# (GitHub + Groq secret-scanning would auto-revoke it)
+context_graph/_apikey.py

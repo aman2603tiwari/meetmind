@@ -1,0 +1,26 @@
+# systemd unit for the context-graph Slack bot (Linux servers/VMs).
+# Install:
+#   sudo cp scripts/context-graph-bot.service /etc/systemd/system/
+#   # edit WorkingDirectory + User below to match your deployment
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable --now context-graph-bot
+# Logs:  journalctl -u context-graph-bot -f
+#
+# Tokens are read from the project's .env (loaded by the bot), so no
+# EnvironmentFile is needed — just point WorkingDirectory at the project root.
+
+[Unit]
+Description=Context Graph Slack bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu/E2Eplatform
+ExecStart=/usr/bin/python3 -m context_graph.slackbot
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

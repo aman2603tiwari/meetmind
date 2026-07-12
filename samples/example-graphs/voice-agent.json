@@ -1,0 +1,35 @@
+{
+  "meta": {
+    "schema_version": "0.1.0",
+    "project": "voice-agent",
+    "meetings": [
+      "recording"
+    ],
+    "meetily_ingested": [],
+    "ingested_hashes": [
+      "7bf49976bafb4b9f49681aeba116524f0ba75b096213d27dc02171ab7acd99fc"
+    ]
+  },
+  "nodes": [
+    {
+      "id": "proj-voice-agent",
+      "type": "Component",
+      "title": "Voice Agent Project",
+      "content": "Deploy voice agent and analyze call endings",
+      "status": "active",
+      "source_meeting": "recording",
+      "created_at": "2026-07-11T22:25:41+00:00",
+      "supersedes": [],
+      "confidence": 1.0,
+      "owner": null,
+      "project": "voice-agent"
+    }
+  ],
+  "edges": [
+    {
+      "from": "proj-voice-agent",
+      "to": "recording",
+      "type": "DECIDED_IN"
+    }
+  ]
+}

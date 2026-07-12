@@ -1,0 +1,22 @@
+groq>=0.11.0
+pydantic>=2.6
+
+# visualization (Graphviz renderer needs the `dot` system binary installed too)
+graphviz>=0.20
+requests>=2.31
+
+# Slack bot (optional — only needed to run context_graph.slackbot)
+slack-bolt>=1.18
+
+# optional: semantic entity resolution in merge (falls back to string matching if absent)
+# sentence-transformers>=2.2      # local, offline embeddings
+# google-generativeai>=0.5        # or Gemini embeddings via GEMINI_API_KEY
+
+# optional: document ingestion (bot reads uploaded files)
+pypdf>=4.0            # .pdf
+python-docx>=1.1      # .docx
+
+# optional: large-audio chunking for non-wav formats, and diarization
+# pydub>=0.25         # split big mp3/m4a (needs ffmpeg on PATH)
+# (diarization uses AssemblyAI over HTTP via `requests` — set ASSEMBLYAI_API_KEY,
+#  CG_STT_PROVIDER=assemblyai; no extra pip install needed)

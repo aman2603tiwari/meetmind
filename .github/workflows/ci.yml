@@ -1,0 +1,24 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install runtime deps needed by tests
+        run: |
+          python -m pip install --upgrade pip
+          # tests only need pydantic; groq/slack/embeddings are optional and stubbed
+          pip install "pydantic>=2.6"
+      - name: Run test suite
+        run: python -m tests.run_all
