@@ -15,7 +15,17 @@ GROQ_WHISPER_MODEL = "whisper-large-v3"
 
 
 def from_file(path: str) -> str:
-    text = Path(path).read_text(encoding="utf-8")
+    """Read a transcript/document into text.
+
+    Documents (.pdf .docx .vtt .srt .md .txt ...) go through docread; any other
+    extension is read as plain UTF-8 text.
+    """
+    from . import docread
+
+    if docread.is_document(path):
+        text = docread.extract_text(path)
+    else:
+        text = Path(path).read_text(encoding="utf-8")
     if not text.strip():
         raise ValueError(f"transcript file is empty: {path}")
     return text
